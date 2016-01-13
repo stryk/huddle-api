@@ -160,3 +160,8 @@
 [0mGET /api/meetings [32m200 [0m4.891 ms - 61[0m
 [0mGET /api/meetings [32m200 [0m2.749 ms - 61[0m
 [0mGET /api/meetings [32m200 [0m1.372 ms - 61[0m
+[0mGET /api/meetings [32m200 [0m22.599 ms - 61[0m
+[0mPOST /api/login [32m200 [0m234.955 ms - 1494[0m
+[0mPOST /api/meetings [32m200 [0m534.764 ms - 253[0m
+[0mPOST /api/meetings [32m200 [0m335.198 ms - 253[0m
+[0mGET /api/meetings [32m200 [0m24.609 ms - 1200[0m

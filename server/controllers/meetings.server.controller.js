@@ -24,14 +24,15 @@ exports.create = function(req, res, ot) {  // requires client username and meeti
 		        message: 'Please login.' 
 		    });
 	} else {
+			var advisorId = req.user.id;
 			ot.createSession(function(err, session){
 				if(!err) {
 					
-					User.findOne({username: req.body.username }, function(err, user, req) {
+					User.findOne({username: req.body.username }, function(err, user) {
 						if(user) {
 							var meeting = new Meeting;
 							meeting.sessionId = session.sessionId;
-							meeting.advisor = req.user.id;
+							meeting.advisor = advisorId;
 							meeting.atTime = new Date(req.body.atTime);
 							meeting.client = user.id;
 							meeting.save(function(err) {
