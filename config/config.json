@@ -1,0 +1,9 @@
+{
+	"environment": "production",
+  "ot_apiKey": "45407922", 
+  "ot_apiSecret": "b13ca138db67700599d0ae4b5c4d085e2afa19a5",
+  "token_secret": "06a28c114e7f46c7a1764933f727ab70",
+  "port": "8000",
+
+  "db": "mongodb://localhost/hudpi"
+}
