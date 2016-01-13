@@ -2,7 +2,6 @@
 var express = require('express'),
 	fs = require('fs'),
 	https = require('https'),
-	config = require('./config/env/' + process.env.NODE_ENV + '.js'),
   bodyParser = require('body-parser'),
   morgan = require('morgan'), // logging requests
   compression = require('compression');

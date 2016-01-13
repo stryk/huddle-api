@@ -27,15 +27,13 @@ exports.create = function(req, res, ot) {  // requires client username and meeti
 			ot.createSession(function(err, session){
 				if(!err) {
 					
-					User.findOne({username: req.body.username }, function(err, user) {
+					User.findOne({username: req.body.username }, function(err, user, req) {
 						if(user) {
 							var meeting = new Meeting;
 							meeting.sessionId = session.sessionId;
 							meeting.advisor = req.user.id;
-							meeting.advisorId = req.user.id;
 							meeting.atTime = new Date(req.body.atTime);
 							meeting.client = user.id;
-							meeting.clientId = user.id;
 							meeting.save(function(err) {
 								if(!err) {
 									meeting.addToUsers;
