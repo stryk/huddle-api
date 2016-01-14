@@ -24,7 +24,6 @@ exports.create = function(req, res, ot) {  // requires client username and meeti
 		        message: 'Please login.' 
 		    });
 	} else {
-			var advisorId = req.user.id;
 			ot.createSession(function(err, session){
 				if(!err) {
 					
@@ -32,7 +31,7 @@ exports.create = function(req, res, ot) {  // requires client username and meeti
 						if(user) {
 							var meeting = new Meeting;
 							meeting.sessionId = session.sessionId;
-							meeting.advisor = advisorId;
+							meeting.advisor = req.user.id;
 							meeting.atTime = new Date(req.body.atTime);
 							meeting.client = user.id;
 							meeting.save(function(err) {
