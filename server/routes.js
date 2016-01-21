@@ -44,8 +44,19 @@ module.exports = function (router, redirectSSL) {
 		        return res.json({ success: false, message: 'Token rejected.' });    
 		      } else {
 		        // if everything is good, save to request for use in other routes
-		        req.user = decoded;    
-		        next();
+		        var username = decoded.username;
+		        User.findOne({"username": username}, function(err, user) {
+		        	if (user) {
+		        		req.user = user;    
+		        		next();
+		        	} else {
+		        		return res.status(403).send({ 
+						        success: false, 
+						        message: 'User account no longer exists.' 
+						    });
+		        	}
+		        });
+		        
 		      }
 		    });
 

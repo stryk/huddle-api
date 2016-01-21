@@ -32,7 +32,7 @@ exports.login = function(req, res, secret) {
 					if (authenticated) {
 						// if user is found and password is right
 		        // create a token
-		        var token = jwt.sign(user, secret, {
+		        var token = jwt.sign({username: user.username}, secret, {
 		          expiresIn: 86400 // expires in 24 hours (seconds)
 		        });
 		        return res.status(200).json( { "success" : true,
@@ -77,7 +77,7 @@ exports.signup = function(req, res, secret) {
         // create a token
         User.findOne({"username":user.username}, function(err, newUser) {
         	if (!err) {
-        		var token = jwt.sign(newUser, secret, {
+        		var token = jwt.sign({user: newUser.username}, secret, {
 	          expiresIn: 86400 // expires in 24 hours (seconds)
 	        });
 	        return res.status(200).json( { "status" : "success",

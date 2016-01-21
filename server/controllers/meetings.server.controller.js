@@ -3,19 +3,7 @@ var Meeting = require('mongoose').model('Meeting');
 var jwt = require('jsonwebtoken');
 
 
-exports.getMeetings = function(req, res, ot) {
 
-
-}
-
-exports.deleteMeeting = function(req, res) {
-
-}
-
-exports.getPassToken = function(req, res) {
-
-
-}
 
 exports.create = function(req, res, ot) {  // requires client username and meeting time in body of post request.
 	if (!req.user) {
@@ -120,7 +108,7 @@ exports.list = function(req, res, ot) {
 	} else {
 
 		if (req.user.role === 'Advisor' || req.user.role === 'Admin') {
-			Meeting.find({ 'advisor' : req.user.id}).populate('client advisor', 'firstName lastName').exec(function(err, meetings) {
+			Meeting.find({ 'advisor' : req.user}).populate('client advisor', 'firstName lastName').exec(function(err, meetings) {
 				if (err) {
 					return res.status(403).send({
 						success: false,
